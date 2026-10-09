@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Project Albino</title>
+<style>
+  :root {
+    --bg: #fafafa; --white:#fff; --border:#dbdbdb; --text:#262626;
+    --text-dim:#8e8e8e; --blue:#0095f6; --red:#ed4956;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#000; --white:#121212; --border:#2a2a2a; --text:#f0f0f0; --text-dim:#8e8e8e; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:var(--font); font-size:14px; line-height:1.45; }
+  .wrap { max-width:470px; margin:0 auto; padding: 24px 0 80px; }
+  .intro { text-align:center; padding: 40px 24px 8px; color:var(--text-dim); font-size:13px; letter-spacing:0.04em; text-transform:uppercase; }
+  .post {
+    background:var(--white); border:1px solid var(--border); border-radius:3px;
+    margin: 16px 12px 32px; opacity:0; transform:translateY(16px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .post.show { opacity:1; transform:none; }
+  .post-header { display:flex; align-items:center; gap:10px; padding:10px 12px; }
+  .avatar { width:32px; height:32px; border-radius:50%; background:#efefef; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:13px; flex-shrink:0; }
+  .who { flex:1; }
+  .handle { font-weight:600; font-size:13px; display:block; }
+  .subhandle { font-size:11px; color:var(--text-dim); }
+  .media { width:100%; display:block; background:#000; max-height:70vh; object-fit:contain; }
+  .caption { padding:10px 12px 4px; font-size:14px; }
+  .caption b { margin-right:4px; }
+  .likes { padding: 8px 12px 0; font-weight:600; font-size:13px; }
+  .comments { padding: 6px 12px 12px; }
+  .comment { display:flex; gap:10px; padding:6px 0; font-size:13.5px; }
+  .comment .avatar { width:26px; height:26px; font-size:11px; }
+  .comment.family .handle-inline { color:var(--text); }
+  .comment.family b { color: var(--blue); }
+  .note-card { padding: 36px 28px; }
+  .note-card .label { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px; }
+  .note-text { font-size:17px; line-height:1.7; white-space:pre-wrap; color:var(--text); }
+  .placeholder { color:var(--text-dim); font-style:italic; }
+  .video-placeholder { aspect-ratio:9/16; background:#000; color:#777; display:flex; align-items:center; justify-content:center; font-size:13px; text-align:center; padding:20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="intro">project albino</p>
+
+  <!-- ===== POST 1 — news report ===== -->
+  <section class="post" data-reveal>
+    <div class="post-header">
+      <div class="avatar">N</div>
+      <div class="who">
+        <span class="handle">[News Outlet Name]</span>
+        <span class="subhandle">Richmond upon Thames · 18 July 2018</span>
+      </div>
+    </div>
+    <!-- Replace this block with: <video class="media" controls src="YOUR_VIDEO_URL_HERE"></video> -->
+    <div class="media video-placeholder">[ news report video goes here — swap this div for a &lt;video&gt; tag once hosted ]</div>
+    <div class="caption"><span class="placeholder">[ headline / report caption ]</span></div>
+  </section>
+
+  <!-- ===== POST 2 — the viral post ===== -->
+  <section class="post" data-reveal>
+    <div class="post-header">
+      <div class="avatar">H</div>
+      <div class="who">
+        <span class="handle">[Her Name]</span>
+        <span class="subhandle">@[her.handle]</span>
+      </div>
+    </div>
+    <!-- Replace with her portrait -->
+    <div class="media video-placeholder" style="aspect-ratio:4/5;">[ portrait image goes here ]</div>
+    <p class="likes">10,482 likes</p>
+    <div class="caption"><b>[her.handle]</b><span class="placeholder">[ her original caption ]</span></div>
+
+    <div class="comments">
+      <!-- Mocking comments and family replies interleaved in one thread, as discussed -->
+      <div class="comment"><div class="avatar">j</div><span><b>jrd_mocks</b> 💀💀💀 never seen anything like that</span></div>
+      <div class="comment"><div class="avatar">k</div><span><b>kaylah.s</b> is this even real lol</span></div>
+      <div class="comment family"><div class="avatar">A</div><span><b>auntie_rosalind</b> <span class="handle-inline">She is the most beautiful girl I know. Stop this.</span></span></div>
+      <div class="comment"><div class="avatar">d</div><span><b>degen.memes</b> [gif]</span></div>
+      <div class="comment family"><div class="avatar">M</div><span><b>marcus.her.brother</b> <span class="handle-inline">This is my sister. Please stop.</span></span></div>
+      <div class="comment"><div class="avatar">?</div><span class="placeholder">[ continue the thread — keep mocking and family replies interleaved, not separated ]</span></div>
+    </div>
+  </section>
+
+  <!-- ===== POST 3 — her note ===== -->
+  <section class="post note-card" data-reveal>
+    <p class="label">[Her Name] · private note</p>
+    <p class="note-text placeholder">[ this is where her note goes — write it yourself, or tell me when you're ready to work on it together ]</p>
+  </section>
+
+</div>
+
+<script>
+  const items = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.2 });
+  items.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
